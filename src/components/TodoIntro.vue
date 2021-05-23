@@ -1,28 +1,34 @@
 <template>
     <div class="intro">
-        <p class="title">{{ hello }}, Kaylee</p>
+        <p class="title">{{ hello }}, {{ userDevice }}</p>
         <p class="todo-task">
             You've got
-            <span class="task-count"><em class="focus">{{ taskCount }}</em>/{{ taskTotal }}</span>
+            <span class="task-count">
+                <em class="focus">{{ taskCount }}</em>
+                /{{ taskTotal }}
+            </span>
             tasks today!
         </p>
     </div>
 </template>
 
 <script>
-    import NowDate from "@/components/module/NowDate.js"
+    import NowDate from '@/components/module/NowDate.js'
+    import { mapState, mapGetters } from "vuex";
 
-    const nowDate = new NowDate();
+    const nowDate = new NowDate()
 
     export default {
-        name: "TodoIntro",
+        name: 'TodoIntro',
         computed: {
-            taskCount() {
-                return this.$store.getters.countOfComplete
-            },
-            taskTotal() {
-                return this.$store.getters.totalListCount
-            }
+            ...mapState({
+                userDevice: state => state.myTodo.deviceId
+            }),
+
+            ...mapGetters({
+                taskTotal: "totalListCount",
+                taskCount: "countOfComplete"
+            }),
         },
         data() {
             return {
@@ -30,7 +36,7 @@
             }
         },
         mounted() {
-            this.hello = nowDate.getTransHour();
+            this.hello = nowDate.getTransHour()
         }
     }
 </script>

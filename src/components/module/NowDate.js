@@ -1,11 +1,11 @@
 export default class NowDate {
     constructor() {
-        this.currentDate = new Date();
-        this.currentMonth = this.currentDate.getMonth() + 1;
-        this.currentGetDate = this.currentDate.getDate();
-        this.weekList = new Array("Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat.");
-        this.currentYoil = this.weekList[this.currentDate.getDay()];
-        this.currentHours = this.currentDate.getHours();
+        this.currentDate = new Date()
+        this.currentMonth = this.currentDate.getMonth() + 1
+        this.currentGetDate = this.currentDate.getDate()
+        this.weekList = new Array('Sun.', 'Mon.', 'Tue.', 'Wed.', 'Thu.', 'Fri.', 'Sat.')
+        this.currentYoil = this.weekList[this.currentDate.getDay()]
+        this.currentHours = this.currentDate.getHours()
     }
 
     /*
@@ -13,7 +13,7 @@ export default class NowDate {
     */
 
     getTransDate() {
-        return `${this.currentMonth}/${this.currentGetDate} ${this.currentYoil}`;
+        return `${this.currentMonth}/${this.currentGetDate} ${this.currentYoil}`
     }
 
     /*
@@ -21,11 +21,11 @@ export default class NowDate {
     */
     getTransHour() {
         if (this.currentHours >= 0 && this.currentHours < 12) {
-            return "Good Morning!";
+            return 'Good Morning!'
         } else if (this.currentHours >= 12 && this.currentHours < 18) {
-            return "Good Afternoon!";
+            return 'Good Afternoon!'
         } else {
-            return "Good Evening!";
+            return 'Good Evening!'
         }
     }
 

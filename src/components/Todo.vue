@@ -9,12 +9,12 @@
 </template>
 
 <script>
-    import TodoHeader from "@/components/TodoHeader";
-    import TodoIntro from "@/components/TodoIntro";
-    import TodoInput from "@/components/TodoInput";
-    import NowDate from "@/components/module/NowDate.js"
+    import TodoHeader from '@/components/TodoHeader'
+    import TodoIntro from '@/components/TodoIntro'
+    import TodoInput from '@/components/TodoInput'
+    import NowDate from '@/components/module/NowDate.js'
 
-    const nowDate = new NowDate();
+    const nowDate = new NowDate()
 
     export default ({
         name: 'Todo',

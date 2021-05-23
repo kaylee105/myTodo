@@ -11,7 +11,6 @@
     </div>
 </template>
 <script>
-
     export default {
         name: 'TodoUtil',
         data() {
@@ -44,6 +43,9 @@
                 right: 15px;
                 @include icon-arr(8, #111, bottom, 1)
             }
+        }
+        .btn-allclear {
+            color:$gray9;
         }
     }
 </style>
