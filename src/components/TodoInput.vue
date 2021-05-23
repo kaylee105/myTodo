@@ -1,15 +1,17 @@
 <template>
     <div class="form-item">
-        <input type="text" placeholder="Enter your task here" v-model="todoData" v-on:keypress.enter="addList()" />
+        <input 
+            type="text"
+            placeholder="Enter your task here"
+            v-model="todoData"
+            @keyup.enter="addList()" />
         <button @click="addList" class="btn"><i class="ico-arr"></i>확인</button>
     </div>
 </template>
 
 <script>
-    import MyTodoListWrite from "@/components/module/MyTodoListWrite.js" //axios로 변경해야해서 삭제필요
-
     export default {
-        name: "TodoInput",
+        name: 'TodoInput',
         data() {
             return {
                 todoData: '',
@@ -18,16 +20,14 @@
         methods: {
             addList() {
                 if (this.todoData !== '') {
-                   // [D]데이터값 전송
-                    new MyTodoListWrite(this.todoData).setLocalStorage(); //axios로 변경해야해서 삭제필요
-                    this.$store.dispatch('addList')
-                    this.clearInput();
+                    this.$store.dispatch('addList', { text: this.todoData })
+                    this.clearInput()
                 } else {
                     alert('할 일을 입력해주세요.')
                 }
             },
             clearInput() {
-                this.todoData = '';
+                this.todoData = ''
             }
         }
     }

@@ -6,19 +6,19 @@
 </template>
 
 <script>
-    import NowDate from "@/components/module/NowDate.js"
+    import NowDate from '@/components/module/NowDate.js'
 
-    const nowDate = new NowDate();
+    const nowDate = new NowDate()
 
     export default {
-        name: "TodoHeader",
+        name: 'TodoHeader',
         data() {
             return {
                 today: ''
             }
         },
         mounted() {
-            this.today = nowDate.getTransDate();
+            this.today = nowDate.getTransDate()
         }
     };
 </script>

@@ -1,20 +1,21 @@
 <template>
     <div class="input-check type1">
         <input
-                :id="id"
-                :name="name"
-                type="checkbox"
-                :checked="item.isComplete"
-                @change="onChangeChecked"/>
-        <lable
-                :for="id"
-                class="label-box"
-                :class="[{done: item.isComplete}]"></lable>
+            :id="id"
+            :name="name"
+            type="checkbox"
+            :checked="item.state == 2"
+            @change="onChangeChecked"/>
         <label
-                :for="id"
-                class="label-legend"
-                :class="[{done: item.isComplete}]">
-            <span>{{msg}}</span> </label>
+            :for="id"
+            class="label-box"
+            :class="[{ done: item.state == 2 }]"></label>
+        <label
+            :for="id"
+            class="label-legend"
+            :class="[{ done: item.state == 2 }]">
+            <span>{{ msg }}</span>
+        </label>
     </div>
 </template>
 <script>
@@ -32,19 +33,20 @@
             },
             item: {
                 type: Object
+            },
+            itemIdx: {
+                type: Number
             }
         },
         methods: {
-            onChangeChecked: function (e) {
-                let payload = {
-                      key: this.item.writeDate
-                }
+            onChangeChecked: function(e) {
+                console.log('---chk click', e.target.checked)
+
                 if (e.target.checked) {
-                    payload.val = true;
+                    this.$store.dispatch('updateList', { item: this.item, idx: this.itemIdx, state: 2})
                 } else {
-                    payload.val = false;
+                    this.$store.dispatch('updateList', { item: this.item, idx: this.itemIdx, state: 1})
                 }
-                this.$store.dispatch('updateList', payload)
             }
         }
     }

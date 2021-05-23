@@ -1,11 +1,13 @@
-import store from '@/store/';
+import store from '@/store'
+import { getDeviceId } from '@/plugins/GetDeviceId'
 
-export function beforeEnterRoute(to,from,next){
-      try{
-            store.dispatch('getAllWriteList');
-      }catch(e){
-            console.log(e.message);
-      }finally{
-            next();
-      }
+export function beforeEnterRoute(req, res, next){
+    try {
+      store.dispatch('setDeviceId',getDeviceId())
+      store.dispatch('getAllWriteList')
+    } catch(e) {
+        console.log(e.message)
+    } finally {
+        next()
+    }
 }

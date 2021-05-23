@@ -1,16 +1,16 @@
 <template>
     <div class="content">
-      <div class="inner">
-        <TodoUtil></TodoUtil>
-        <TodoList></TodoList>
-        <TodoFooter></TodoFooter>
-      </div>
+        <div class="inner">
+            <TodoUtil></TodoUtil>
+            <TodoList></TodoList>
+            <TodoFooter></TodoFooter>
+        </div>
     </div>
 </template>
 <script>
-import TodoUtil from "@/components/TodoUtil";
-import TodoList from "@/components/TodoList";
-import TodoFooter from "@/components/TodoFooter";
+import TodoUtil from '@/components/TodoUtil'
+import TodoList from '@/components/TodoList'
+import TodoFooter from '@/components/TodoFooter'
 
 export default {
     name: 'TodoContent',
