@@ -1,6 +1,6 @@
 <template>
     <div class="intro">
-        <p class="title">{{ hello }}, {{ userDevice }}</p>
+        <p class="title">{{ helloMessage }}, {{ userDevice }}</p>
         <p class="todo-task">
             You've got
             <span class="task-count">
@@ -13,13 +13,14 @@
 </template>
 
 <script>
-    import NowDate from '@/components/module/NowDate.js'
-    import { mapState, mapGetters } from "vuex";
 
-    const nowDate = new NowDate()
+    import { mapState, mapGetters } from "vuex";
 
     export default {
         name: 'TodoIntro',
+        props: {
+              helloMessage: String,
+        },
         computed: {
             ...mapState({
                 userDevice: state => state.myTodo.deviceId
@@ -29,14 +30,6 @@
                 taskTotal: "totalListCount",
                 taskCount: "countOfComplete"
             }),
-        },
-        data() {
-            return {
-                hello: ''
-            }
-        },
-        mounted() {
-            this.hello = nowDate.getTransHour()
         }
     }
 </script>

@@ -1,8 +1,8 @@
 <template>
     <section class="visual" v-bind:class="{ dark : displayMode }">
         <div class="inner">
-            <TodoHeader/>
-            <TodoIntro/>
+            <TodoHeader :today="today"/>
+            <TodoIntro :helloMessage="helloMessage"/>
             <TodoInput/>
         </div>
     </section>
@@ -12,7 +12,7 @@
     import TodoHeader from '@/components/TodoHeader'
     import TodoIntro from '@/components/TodoIntro'
     import TodoInput from '@/components/TodoInput'
-    import NowDate from '@/components/module/NowDate.js'
+    import NowDate from '@/plugins/NowDate.js'
 
     const nowDate = new NowDate()
 
@@ -25,7 +25,9 @@
         },
         data() {
             return {
-                displayMode: nowDate.getTransDisplay()
+                displayMode: nowDate.getTransDisplay(),
+                today: nowDate.getTransDate(),
+                helloMessage : nowDate.getTransHour()
             }
         }
     })

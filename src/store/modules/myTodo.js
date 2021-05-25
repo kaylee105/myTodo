@@ -2,10 +2,10 @@ import { axiosDefault } from '@/store/api/BaseAxios'
 
 
 const state = () => ({
-    deviceId: 1111,
+    deviceId: 0,
     writeList: [],
     sort: 'asc',
-    isShowbeforeLoading: true,
+    isShowbeforeLoading: false,
 })
 
 //getters
@@ -41,7 +41,7 @@ const actions = {
    setDeviceId({ commit }, devicePayload){
       commit('setDeviceId', devicePayload)
     },
-    // [NOTE] 수행위치: route/beforeEnterRoute.js
+
     getAllWriteList({ commit, state }) {
         axiosDefault().get(`/api/v1/todos/${state.deviceId}`)
             .then(data => {
@@ -51,14 +51,9 @@ const actions = {
     },
 
     addList: async ({ commit, state }, itemPayload) => {
-        //localstorage에 추가하기
-        // [NOTE] API post
-        // - 궁금한점1: state에 정렬 상태에 따라, push or shift 했었는
-        // - 궁금한점1: 수정 있을때마다 데이터를 전체 받아와서 뿌려야 하는건지. (우선 이걸로)
 
         await axiosDefault().post(`/api/v1/todos/${state.deviceId}`, itemPayload)
             .then(data => {
-                // [NOTE] post 응답 data는 성공 여부만 있음 - 그래서 get도 호출했음..ㅠ
                 console.log(`post 성공 /api/v1/todos/${state.deviceId}`, data)
         })
 
@@ -98,7 +93,6 @@ const actions = {
 
     updateSort: ({ commit, state }, _sort) => {
             console.log(state.writeList)
-            //[D] id값으로 정렬 변경
             let _writeLists = [];
             if (_sort == 'asc') {
                   _writeLists = state.writeList.sort(function(a, b) {
@@ -128,11 +122,6 @@ const mutations = {
         state.writeList = writeLists
     },
 
-    // [NOTE] 미사용 주석
-    // addList: (state, itemPayload) => {
-    //     state.writeList = itemPayload
-    // },
-
     removeList(state, idxPayload) {
         state.writeList.splice(idxPayload, 1)
     },
@@ -141,7 +130,6 @@ const mutations = {
         state.writeList = emptyPayload
     },
 
-    // [NOTE] state 변경 추가
     updateState(state, itemPayload) {
         state.writeList[itemPayload.idx].state = itemPayload.state
     },
