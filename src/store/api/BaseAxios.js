@@ -22,7 +22,7 @@ function responseInterceptors(axiosInst) {
         function (response) {
             setTimeout(() => {
                   store.dispatch('setBeforeLoading',false)
-            }, 800);
+            }, 500);
 
             return response.data;
         },
