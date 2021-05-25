@@ -24,7 +24,7 @@
 ## project순서
 
 1. /src/store/api/BaseAxios.js에 axios관련하여 작성
-	- 식별값은 store에 있는(/src/store/modules/myTodo.js) state중 deviceId로 임시 사용=> 추후 변경 예정
+	- 식별값은 처음에는 서버에서 가져와서 localStorage에 저장 그 이후에 store에 저장. 재접속시 localStorage=>store에 
 	- 글번호 id값은 작성한 후 나오는 값 중 id값
 
 ```json
