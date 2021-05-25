@@ -9,7 +9,7 @@
 ### project origin upstream
 1. 프로젝트 원본 upsteram 추가
 	```bash
-	git remote add upstream git@github.com:VueStudy1Team/myTodo1Team-1.git
+	git remote add upstream git@github.com:anjh80/myTodo1Team.git
 	```
 2. 프로젝트 원본 fetch
 
