@@ -1,4 +1,6 @@
 module.exports = {
+    outputDir: 'docs',
+	publicPath: '/myTodo',
     css: {
         loaderOptions: {
             scss: {
